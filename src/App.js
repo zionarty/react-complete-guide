@@ -1,6 +1,7 @@
 //import ExpenseItem from "./components/ExpenseItem";
 import React from "react";
 import ExpenseList from "./components/Expenses/ExpenseList";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
   const expenses = [
@@ -29,19 +30,25 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
-  return React.createElement(
-    "div",
-    {},
-    React.createElement("h2", {}, "Let's get started"),
-    React.createElement(ExpenseList, { expenseItem: expenses })
-  );
 
-  // return (
-  //   <div>
-  //     <h2>Let's get started</h2>
-  //     <ExpenseList expenseItem={expenses} />
-  //   </div>
-  // )
+  const addExpenseHandler = expense => {
+    console.log("In App.js");
+    console.log(expense);
+  };
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started"),
+  //   React.createElement(ExpenseList, { expenseItem: expenses })
+  // );
+
+  return (
+    <div>
+      {/* <h2>Let's get started</h2> */}
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <ExpenseList expenseItem={expenses} />
+    </div>
+  );
 };
 
 export default App;
